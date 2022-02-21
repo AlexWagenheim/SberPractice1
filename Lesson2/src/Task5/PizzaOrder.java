@@ -48,27 +48,35 @@ public class PizzaOrder {
         this.address = address;
     }
 
+    private String getSizeWriting() {
+        String sizeInfo;
+        if (size.equals(SizeType.SMALL)) {
+            sizeInfo = "Маленькая";
+        } else if (size.equals(SizeType.MEDIUM)) {
+            sizeInfo = "Средняя";
+        } else {
+            sizeInfo = "Большая";
+        }
+        return sizeInfo;
+    }
+
+    private String getSauceWriting() {
+        String sauceInfo;
+        if (needSauce) {
+            sauceInfo = "с соусом";
+        } else {
+            sauceInfo = "без соуса";
+        }
+        return sauceInfo;
+    }
+
     public void order() {
         if (orderAccepted) {
             System.out.println("Заказ уже принят");
         }
         else {
             orderAccepted = true;
-            String sizeInfo;
-            if (size.equals(SizeType.SMALL)) {
-                sizeInfo = "Маленькая";
-            } else if (size.equals(SizeType.MEDIUM)) {
-                sizeInfo = "Средняя";
-            } else {
-                sizeInfo = "Большая";
-            }
-            String sauceInfo;
-            if (needSauce) {
-                sauceInfo = "с соусом";
-            } else {
-                sauceInfo = "без соуса";
-            }
-            System.out.println(String.format("Заказ принят. %s пицца «%s» %s на адрес %s", sizeInfo, name, sauceInfo, address));
+            System.out.printf("Заказ принят. %s пицца «%s» %s на адрес %s %n", getSizeWriting(), name, getSauceWriting(), address);
         }
     }
 
@@ -81,29 +89,19 @@ public class PizzaOrder {
         }
     }
 
-    public String toString() {
-        String sizeInfo;
-        if (size.equals(SizeType.SMALL)) {
-            sizeInfo = "Маленькая";
-        } else if (size.equals(SizeType.MEDIUM)) {
-            sizeInfo = "Средняя";
-        } else {
-            sizeInfo = "Большая";
-        }
-
-        String sauceInfo;
-        if (needSauce) {
-            sauceInfo = "да";
-        } else {
-            sauceInfo = "нет";
-        }
-
+    private String getOrderStatus() {
         String orderInfo;
         if (orderAccepted) {
             orderInfo = "принят";
         } else {
             orderInfo = "не принят";
         }
-        return String.format("Заказ\nНазвание пиццы: %s\nРазмер: %s\nНужен соус: %s\nАдрес доставки: %s\nСтатус заказа: %s", name, sizeInfo, sauceInfo, address, orderInfo);
+        return orderInfo;
+    }
+
+    public String toString() {
+
+        return String.format("Заказ\nНазвание пиццы: %s\nРазмер: %s\nСоус: %s\nАдрес доставки: %s\nСтатус заказа: %s",
+                name, getSizeWriting(), getSauceWriting(), address, getOrderStatus());
     }
 }
