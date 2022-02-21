@@ -24,17 +24,17 @@ public class Phone {
     }
 
     public void receiveCall(String name) {
-        System.out.println(String.format("Звонит %s", name));
+        System.out.printf("Звонит %s%n", name);
     }
 
     public void receiveCall(String name, String number) {
-        System.out.println(String.format("Звонит %s (%s)", name, number));
+        System.out.printf("Звонит %s (%s)%n", name, number);
     }
 
     public void sendMessage(String[] numbers) {
         System.out.println("sendMessage:");
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.println(numbers[i]);
+        for (String s: numbers) {
+            System.out.println(s);
         }
     }
 

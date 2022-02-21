@@ -6,13 +6,13 @@ public class PersonDriver {
         Phone phone2 = new Phone("+79999999999", "Samsung");
         Phone phone3 = new Phone("+79007777777", "DEXP", 100);
 
-        System.out.println("phone1:\n" + phone1);
-        System.out.println("phone2:\n" + phone2);
-        System.out.println("phone3:\n" + phone3);
+        System.out.printf("phone1:%n%s%n", phone1);
+        System.out.printf("phone2:%n%s%n", phone2);
+        System.out.printf("phone3:%n%s%n", phone3);
 
-        System.out.println("phone1:" + phone1.getNumber());
-        System.out.println("phone2:" + phone2.getNumber());
-        System.out.println("phone3:" + phone3.getNumber());
+        System.out.printf("phone1: %s%n", phone1.getNumber());
+        System.out.printf("phone2: %s%n", phone2.getNumber());
+        System.out.printf("phone3: %s%n", phone3.getNumber());
         System.out.println();
 
         phone1.receiveCall("Ivan");
