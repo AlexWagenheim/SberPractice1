@@ -38,7 +38,7 @@ public class MatrixDriver {
         System.out.println("A + B:");
         System.out.println(Matrix.sum(A, B));
 
-        System.out.println(String.format("k = %s; k*A:", k));
+        System.out.printf("k = %s; k*A: %n", k);
         System.out.println(Matrix.multiplyByNumber(k, A));
 
         System.out.println("A*C:");

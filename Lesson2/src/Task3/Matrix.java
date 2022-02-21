@@ -52,7 +52,7 @@ public class Matrix {
             }
         }
         else {
-            System.out.println(String.format("Размеры матриц %sx%s и %sx%s не совпадают", A.m, A.n, B.m, B.n));
+            System.out.printf("Размеры матриц %sx%s и %sx%s не совпадают %n", A.m, A.n, B.m, B.n);
         }
         return C;
     }
@@ -83,7 +83,7 @@ public class Matrix {
             }
         }
         else {
-            System.out.println(String.format("Недопустимые размеры матриц: %sx%s и %sx%s", A.m, A.n, B.m, B.n));
+            System.out.printf("Недопустимые размеры матриц: %sx%s и %sx%s %n", A.m, A.n, B.m, B.n);
         }
         return C;
     }
