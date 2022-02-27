@@ -1,5 +1,9 @@
 public class FigureUtil {
 
+    private FigureUtil() {
+
+    }
+
     public static double area(Figure figure) {
         return figure.area();
     }
@@ -13,6 +17,6 @@ public class FigureUtil {
     }
 
     public static void draw(Figure figure, Color color) {
-        figure.draw();
+        figure.draw(color);
     }
 }

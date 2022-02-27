@@ -22,11 +22,26 @@ public class Circle extends Figure{
 
     @Override
     public void draw() {
-        System.out.println("Draw circle");
+        draw(Color.BLACK);
+    }
+
+    private String getColor(Color color) {
+        if (color.equals(Color.RED)) {
+            return "красный";
+        } else if (color.equals(Color.GREEN)) {
+            return "зелёный";
+        } else if (color.equals(Color.BLUE)) {
+            return "синий";
+        } else if (color.equals(Color.WHITE)) {
+            return "белый";
+        } else {
+            return "чёрный";
+        }
     }
 
     @Override
     public void draw(Color color) {
-        System.out.println("Draw circle in" + color);
+        Point[] points = getPoints();
+        System.out.printf("Нарисован %s круг с центром в точке O%s, радиуса %s \n", getColor(color), points[0], r);
     }
 }
