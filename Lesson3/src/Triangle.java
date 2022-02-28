@@ -5,15 +5,18 @@ public class Triangle extends Figure {
     }
 
     private double getSideA(Point[] points) {
-        return Math.sqrt(Math.pow((points[1].getX() - points[0].getX()), 2) + Math.pow((points[1].getY() - points[0].getY()), 2));
+        return Math.sqrt(Math.pow((points[1].getX() - points[0].getX()), 2) +
+                Math.pow((points[1].getY() - points[0].getY()), 2));
     }
 
     private double getSideB(Point[] points) {
-        return Math.sqrt(Math.pow((points[2].getX() - points[1].getX()), 2) + Math.pow((points[2].getY() - points[1].getY()), 2));
+        return Math.sqrt(Math.pow((points[2].getX() - points[1].getX()), 2) +
+                Math.pow((points[2].getY() - points[1].getY()), 2));
     }
 
     private double getSideC(Point[] points) {
-        return Math.sqrt(Math.pow((points[3].getX() - points[0].getX()), 2) + Math.pow((points[3].getY() - points[0].getY()), 2));
+        return Math.sqrt(Math.pow((points[3].getX() - points[0].getX()), 2) +
+                Math.pow((points[3].getY() - points[0].getY()), 2));
     }
 
     @Override
@@ -22,8 +25,8 @@ public class Triangle extends Figure {
         double sideA = getSideA(points);
         double sideB = getSideB(points);
         double sideC = getSideC(points);
-        double p = (sideA + sideB + sideC)/2;
-        return Math.sqrt(p*(p - sideA)*(p - sideB)*(p - sideC));
+        double p = (sideA + sideB + sideC) / 2;
+        return Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
     }
 
     @Override
@@ -37,23 +40,9 @@ public class Triangle extends Figure {
         draw(Color.BLACK);
     }
 
-    private String getColor(Color color) {
-        if (color.equals(Color.RED)) {
-            return "красный";
-        } else if (color.equals(Color.GREEN)) {
-            return "зелёный";
-        } else if (color.equals(Color.BLUE)) {
-            return "синий";
-        } else if (color.equals(Color.WHITE)) {
-            return "белый";
-        } else {
-            return "чёрный";
-        }
-    }
-
     @Override
     public void draw(Color color) {
         Point[] points = getPoints();
-        System.out.printf("Нарисован %s треугольник с вершинами в точках A%s, B%s, C%s \n", getColor(color), points[0], points[1], points[2]);
+        System.out.printf("Нарисован %s треугольник с вершинами в точках A%s, B%s, C%s \n", FigureUtil.getColor(color), points[0], points[1], points[2]);
     }
 }

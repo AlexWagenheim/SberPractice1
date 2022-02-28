@@ -19,4 +19,19 @@ public class FigureUtil {
     public static void draw(Figure figure, Color color) {
         figure.draw(color);
     }
+
+    public static String getColor(Color color) {
+        switch (color) {
+            case RED:
+                return "красный";
+            case GREEN:
+                return "зелёный";
+            case BLUE:
+                return "синий";
+            case WHITE:
+                return "белый";
+            default:
+                return "чёрный";
+        }
+    }
 }

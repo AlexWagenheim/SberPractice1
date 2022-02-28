@@ -1,4 +1,4 @@
-public abstract class Figure implements Drawable{
+public abstract class Figure implements Drawable {
     private Point[] points;
 
     Figure(Point[] points) {
@@ -10,6 +10,7 @@ public abstract class Figure implements Drawable{
     }
 
     public abstract double area();
+
     public abstract double perimeter();
 
 
