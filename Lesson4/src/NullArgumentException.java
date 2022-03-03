@@ -1,4 +1,5 @@
 public class NullArgumentException extends BankOnlineException {
+
     public NullArgumentException() {
     }
 

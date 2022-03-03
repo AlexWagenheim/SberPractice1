@@ -12,6 +12,7 @@ public class BankOnline {
             arr[i] = a[i];
         }
         arr[a.length] = s;
+
         return arr;
     }
 

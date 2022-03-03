@@ -1,4 +1,5 @@
 public class LimitMoneyException extends BankOnlineException {
+
     public LimitMoneyException() {
     }
 

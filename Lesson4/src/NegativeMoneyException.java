@@ -1,4 +1,5 @@
 public class NegativeMoneyException extends BankOnlineException {
+
     public NegativeMoneyException() {
     }
 

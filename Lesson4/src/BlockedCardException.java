@@ -1,4 +1,5 @@
 public class BlockedCardException extends BankOnlineException {
+
     public BlockedCardException() {
     }
 
