@@ -210,11 +210,6 @@ public class LinkedList implements List, Deque{
                 inserted.prev = ptr.prev;
                 inserted.next = ptr;
                 ptr.prev = inserted;
-//                if (ptr.next != null) {
-//                    ptr.next.prev = inserted;
-//                } else {
-//                    last = inserted;
-//                }
                 itemsCount++;
             }
         }
