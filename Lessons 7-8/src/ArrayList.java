@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
@@ -7,9 +8,10 @@ public class ArrayList implements List{
     private int capacity;
     private int itemsCount;
     private Object[] arr;
+    private final int startCapacity = 2;
 
     ArrayList() {
-        capacity = 10;
+        capacity = startCapacity;
         itemsCount = 0;
         arr = new Object[capacity];
     }
@@ -26,8 +28,8 @@ public class ArrayList implements List{
 
     @Override
     public boolean contains(Object item) {
-        for (Object obj: arr) {
-            if (obj.equals(item)) {
+        for (int i = 0; i < itemsCount; i++) {
+            if (arr[i].equals(item)) {
                 return true;
             }
         }
@@ -44,6 +46,12 @@ public class ArrayList implements List{
         arr = new Object[capacity];
         for (int i = 0; i < buffer.length; i++) {
             arr[i] = buffer[i];
+        }
+    }
+
+    private void moveRight(int x) {
+        for (int i = itemsCount; i > x; i--) {
+            arr[i] = arr[i - 1];
         }
     }
 
@@ -79,7 +87,7 @@ public class ArrayList implements List{
 
     @Override
     public void clear() {
-        capacity = 10;
+        capacity = startCapacity;
         itemsCount = 0;
         arr = new Object[capacity];
     }
@@ -89,6 +97,7 @@ public class ArrayList implements List{
         while ((index > capacity) || (itemsCount + 1 > capacity)) {
             resize();
         }
+        moveRight(index);
         arr[index] = item;
         itemsCount++;
     }
@@ -138,6 +147,7 @@ public class ArrayList implements List{
         } else {
             Object obj = arr[index];
             moveLeft(index);
+            itemsCount--;
             return obj;
         }
     }
@@ -155,19 +165,51 @@ public class ArrayList implements List{
         }
     }
 
+    class Pointer implements Iterator{
+        private int i = 0;
+
+        @Override
+        public boolean hasNext() {
+            return i < itemsCount;
+        }
+
+        @Override
+        public Object next() {
+            if (hasNext()) {
+                i += 1;
+                return arr[i - 1];
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public void remove() {
+            if (i < itemsCount) {
+                moveLeft(i);
+                itemsCount--;
+            }
+        }
+    }
 
     @Override
     public Iterator iterator() {
-        return null;
+        return new Pointer();
+    }
+
+    private String writeElements(){
+        String ans = "";
+        for (int i = 0; i < itemsCount; i++) {
+            ans += arr[i];
+            if (i + 1 < itemsCount) {
+                ans += ", ";
+            }
+        }
+        return ans;
     }
 
     @Override
-    public void forEach(Consumer action) {
-        List.super.forEach(action);
-    }
-
-    @Override
-    public Spliterator spliterator() {
-        return List.super.spliterator();
+    public String toString() {
+        return String.format("ArrayList{capacity=%s, itemsCount=%s, arr=[%s]}", capacity, itemsCount, writeElements());
     }
 }

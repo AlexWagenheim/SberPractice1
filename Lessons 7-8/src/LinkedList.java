@@ -13,7 +13,6 @@ public class LinkedList implements List, Deque{
         itemsCount = 0;
         first = null;
         last = null;
-
     }
 
     class Node {
@@ -209,12 +208,13 @@ public class LinkedList implements List, Deque{
                     first = inserted;
                 }
                 inserted.prev = ptr.prev;
-                inserted.next = ptr.next;
-                if (ptr.next != null) {
-                    ptr.next.prev = inserted;
-                } else {
-                    last = inserted;
-                }
+                inserted.next = ptr;
+                ptr.prev = inserted;
+//                if (ptr.next != null) {
+//                    ptr.next.prev = inserted;
+//                } else {
+//                    last = inserted;
+//                }
                 itemsCount++;
             }
         }
@@ -274,7 +274,7 @@ public class LinkedList implements List, Deque{
 
     @Override
     public int lastIndexOf(Object item) {
-        int i = itemsCount;
+        int i = itemsCount - 1;
         Node ptr = last;
         while (ptr != null) {
             if (ptr.item.equals(item)) {
@@ -293,7 +293,7 @@ public class LinkedList implements List, Deque{
         } else {
             int i = 0;
             Node ptr = first;
-            while (i < itemsCount) {
+            while ((ptr != null) && (i < index)) {
                 ptr = ptr.next;
                 i++;
             }
@@ -331,18 +331,70 @@ public class LinkedList implements List, Deque{
         }
     }
 
+    class Pointer implements Iterator{
+        private int i = 0;
+
+        @Override
+        public boolean hasNext() {
+            return i < itemsCount;
+        }
+
+        @Override
+        public Object next() {
+            if (hasNext()) {
+                i++;
+                return get(i - 1);
+            } else {
+                return null;
+            }
+        }
+
+        @Override
+        public void remove() {
+            if (i < itemsCount) {
+                int j = 0;
+                Node ptr = first;
+                while (j < i) {
+                    ptr = ptr.next;
+                    j++;
+                }
+                if (ptr.prev == null) {
+                    first = ptr.next;
+                } else {
+                    ptr.prev.next = ptr.next;
+                }
+                if (ptr.next == null) {
+                    last = ptr.prev;
+                } else {
+                    ptr.next.prev = ptr.next;
+                }
+                itemsCount--;
+            }
+        }
+    }
+
     @Override
     public Iterator iterator() {
-        return null;
+        return new Pointer();
+    }
+
+    private String writeElements(){
+        String ans = "";
+        Node ptr = first;
+        int i = 0;
+        while ((ptr != null) && (i < itemsCount)) {
+            ans += ptr.item;
+            if (i + 1 < itemsCount) {
+                ans += ", ";
+            }
+            ptr = ptr.next;
+            i++;
+        }
+        return ans;
     }
 
     @Override
-    public void forEach(Consumer action) {
-        List.super.forEach(action);
-    }
-
-    @Override
-    public Spliterator spliterator() {
-        return List.super.spliterator();
+    public String toString() {
+        return String.format("LinKedList{itemsCount=%s, arr=[%s]}", itemsCount, writeElements());
     }
 }
