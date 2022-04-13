@@ -388,6 +388,14 @@ public class LinkedList implements List, Deque{
         return ans;
     }
 
+    public Node getFirstNode(){
+        return first;
+    }
+
+    public Node getLastNode(){
+        return last;
+    }
+
     @Override
     public String toString() {
         return String.format("LinKedList{itemsCount=%s, arr=[%s]}", itemsCount, writeElements());
