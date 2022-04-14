@@ -41,7 +41,7 @@ public class HashMap implements Map{
 
     @Override
     public boolean containsKey(Object key) {
-        int bucketNumber = Math.abs(key.hashCode() % size);
+        int bucketNumber = Math.abs(key.hashCode() % buckets.length);
         LinkedList list = buckets[bucketNumber];
         if (list == null) {
             return false;
@@ -71,7 +71,7 @@ public class HashMap implements Map{
 
     @Override
     public Object get(Object key) {
-        int bucketNumber = Math.abs(key.hashCode() % size);
+        int bucketNumber = Math.abs(key.hashCode() % buckets.length);
         LinkedList list = buckets[bucketNumber];
         if (list == null) {
             return null;
@@ -87,7 +87,7 @@ public class HashMap implements Map{
 
     @Override
     public Object put(Object key, Object value) {
-        int bucketNumber = Math.abs(key.hashCode() % size);
+        int bucketNumber = Math.abs(key.hashCode() % buckets.length);
         LinkedList list = buckets[bucketNumber];
         if (list == null) {
             list = new LinkedList();
@@ -109,7 +109,7 @@ public class HashMap implements Map{
 
     @Override
     public Object remove(Object key) {
-        int bucketNumber = Math.abs(key.hashCode() % size);
+        int bucketNumber = Math.abs(key.hashCode() % buckets.length);
         LinkedList list = buckets[bucketNumber];
         if (list == null) {
             return null;
