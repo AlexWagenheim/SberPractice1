@@ -371,7 +371,7 @@ public class LinkedList implements List, Deque{
         String ans = "";
         Node ptr = first;
         int i = 0;
-        while ((ptr != null) && (i < itemsCount)) {
+        while ((ptr != null)) {
             ans += ptr.item;
             if (i + 1 < itemsCount) {
                 ans += ", ";

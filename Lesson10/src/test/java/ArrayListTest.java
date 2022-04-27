@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class ArrayListTest {
     @Test
-    public void ArrayListItemsCountZero () {
+    public void ArrayListItemsCountZero() {
         ArrayList arrayList = new ArrayList();
 
         int size = arrayList.size();
@@ -12,7 +12,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListItemsCountOne () {
+    public void ArrayListItemsCountOne() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add(1);
@@ -22,7 +22,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListEmpty () {
+    public void ArrayListEmpty() {
         ArrayList arrayList = new ArrayList();
 
         boolean answer = arrayList.isEmpty();
@@ -31,7 +31,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListNotEmpty () {
+    public void ArrayListNotEmpty() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add(100);
@@ -42,7 +42,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListContains () {
+    public void ArrayListContains() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add(100);
@@ -53,7 +53,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListContains2 () {
+    public void ArrayListContains2() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add(1);
@@ -65,7 +65,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListNotContains () {
+    public void ArrayListNotContains() {
         ArrayList arrayList = new ArrayList();
 
         boolean answer = arrayList.contains(100);
@@ -74,7 +74,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListResizeTest () {
+    public void ArrayListResizeTest() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add(1);
@@ -87,7 +87,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListCanRemove () {
+    public void ArrayListCanRemove() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add("a");
@@ -100,7 +100,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListCanNotRemove () {
+    public void ArrayListCanNotRemove() {
         ArrayList arrayList = new ArrayList();
 
         boolean answer = arrayList.remove("a");
@@ -109,7 +109,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListClearTest () {
+    public void ArrayListClearTest() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add("a");
@@ -124,35 +124,44 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListAddAtIndex () {
+    public void ArrayListAddAtIndex() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add(0, "a");
         arrayList.add(2, "b");
+        Assertions.assertEquals("ArrayList{capacity=4, itemsCount=2, " +
+                "arr=[a, null, b, null]}", arrayList.toString());
         arrayList.clear();
 
         arrayList.add(0, "a");
         arrayList.add(0, "b");
         arrayList.add(0, "c");
+        Assertions.assertEquals("ArrayList{capacity=4, itemsCount=3, " +
+                "arr=[c, b, a, null]}", arrayList.toString());
         arrayList.clear();
 
         arrayList.add(0, "a");
         arrayList.add(0, "b");
         arrayList.add(2, "c");
+        Assertions.assertEquals("ArrayList{capacity=4, itemsCount=3, " +
+                "arr=[b, a, c, null]}", arrayList.toString());
         arrayList.clear();
     }
 
     @Test
-    public void ArrayListSetTest () {
+    public void ArrayListSetTest() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.set(1, "a");
         arrayList.set(0, "b");
+        arrayList.set(1, "c");
+        Assertions.assertEquals("ArrayList{capacity=2, itemsCount=2, " +
+                "arr=[b, c]}", arrayList.toString());
         arrayList.clear();
     }
 
     @Test
-    public void ArrayListGetTest () {
+    public void ArrayListGetTest() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add("a");
@@ -163,7 +172,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListIndexOfTest () {
+    public void ArrayListIndexOfTest() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add("a");
@@ -177,7 +186,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListLastIndexOfTest () {
+    public void ArrayListLastIndexOfTest() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add("a");
@@ -191,7 +200,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListRemoveTest () {
+    public void ArrayListRemoveTest() {
         ArrayList arrayList = new ArrayList();
 
         arrayList.add("a");
@@ -202,7 +211,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void ArrayListSubListTest () {
+    public void ArrayListSubListTest() {
         ArrayList arrayList = new ArrayList();
         ArrayList correct = new ArrayList();
 
@@ -216,15 +225,15 @@ public class ArrayListTest {
         correct.add("c");
         correct.add("d");
 
-        Assertions.assertEquals(correct.toString(), arrayList.subList(1,4).toString());
+        Assertions.assertEquals(correct.toString(), arrayList.subList(1, 4).toString());
 
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> arrayList.subList(5,6));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> arrayList.subList(5, 6));
 
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> arrayList.subList(1,6));
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> arrayList.subList(1, 6));
     }
 
     @Test
-    public void ArrayListIteratorTest () {
+    public void ArrayListIteratorTest() {
         ArrayList arrayList = new ArrayList();
         StringBuilder answer = new StringBuilder();
 
@@ -234,7 +243,7 @@ public class ArrayListTest {
         arrayList.add("d");
         arrayList.add("e");
 
-        for (Object obj: arrayList) {
+        for (Object obj : arrayList) {
             answer.append((String) obj);
         }
         Assertions.assertEquals("abcde", answer.toString());

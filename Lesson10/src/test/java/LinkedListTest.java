@@ -135,6 +135,8 @@ public class LinkedListTest {
         linkedList.add(1, "b");
         linkedList.add(1, "c");
         linkedList.add(0, "d");
+        Assertions.assertEquals("LinKedList{itemsCount=4, " +
+                "arr=[d, a, c, b]}", linkedList.toString());
         linkedList.clear();
     }
 
@@ -145,6 +147,8 @@ public class LinkedListTest {
         linkedList.set(0, "a");
         linkedList.set(5, "b");
         linkedList.set(0, "c");
+        Assertions.assertEquals("LinKedList{itemsCount=2, " +
+                "arr=[c, b]}", linkedList.toString());
     }
 
     @Test

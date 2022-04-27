@@ -196,9 +196,9 @@ public class ArrayList implements List{
 
     private String writeElements(){
         String ans = "";
-        for (int i = 0; i < itemsCount; i++) {
+        for (int i = 0; i < capacity; i++) {
             ans += arr[i];
-            if (i + 1 < itemsCount) {
+            if (i + 1 < capacity) {
                 ans += ", ";
             }
         }
