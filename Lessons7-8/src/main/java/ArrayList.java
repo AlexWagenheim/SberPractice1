@@ -1,14 +1,11 @@
-import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class ArrayList implements List{
 
     private int capacity;
     private int itemsCount;
-    private Object[] arr;
     private final int startCapacity = 2;
+    private Object[] arr;
 
     ArrayList() {
         capacity = startCapacity;
@@ -94,7 +91,7 @@ public class ArrayList implements List{
 
     @Override
     public void add(int index, Object item) {
-        while ((index > capacity) || (itemsCount + 1 > capacity)) {
+        while ((index >= capacity) || (itemsCount + 1 > capacity)) {
             resize();
         }
         moveRight(index);
