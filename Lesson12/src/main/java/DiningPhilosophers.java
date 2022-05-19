@@ -18,7 +18,6 @@ public class DiningPhilosophers implements Runnable{
 
     @Override
     public void run() {
-//        int saved = current;
          if (((expectedPhilosopher + 1)%5 == Integer.parseInt(Thread.currentThread().getName())) ||
                  ((expectedPhilosopher + 4)%5 == Integer.parseInt(Thread.currentThread().getName())) ||
                  ((expectedPhilosopher + 3)%5 == Integer.parseInt(Thread.currentThread().getName()))) {
